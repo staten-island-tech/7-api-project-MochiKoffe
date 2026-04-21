@@ -8,7 +8,7 @@ def getPoke(poke):
         return None
 
     data = response.json()
-    return {
+    return { #just write return data
         "name": data["name"],
         "height": data["height"], 
         "weight": data["weight"],
@@ -16,4 +16,4 @@ def getPoke(poke):
     }
 
 pokemon = getPoke("Bulbasaur")
-print(pokemon)
+print(pokemon) #no pokemon api
