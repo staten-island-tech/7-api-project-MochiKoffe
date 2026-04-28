@@ -1,15 +1,19 @@
 import requests
 import json
 
-def getFish(fish): 
-    response = requests.get(f"https://www.fisheries.noaa.gov/topic/sustainable-seafood{fish.lower()}")
 
+def getFruity(fruit): 
+    response = requests.get(f"https://www.fruityvice.com/api/fruit/all")
+    if response.status_code != 200: 
+        print("Error fetching data!")
+        return None
 
     data = response.json()
-    return data
+    print(data)
 
-fishes = getFish("Dall’s Porpoise")
-print(fishes) 
+    
+fruit = getFruity("apple")
+print(fruit)
 
 
 """ def divide(a,b):
