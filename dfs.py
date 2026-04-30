@@ -7,19 +7,26 @@ def getFruity(fruit):
     if response.status_code != 200: 
         print("Error fetching data!")
         return None
-
     data = response.json()
-    print(data)
-    
-fruit = {getFruity("Rosaceae")}
-
-family = {}
-for index, item in enumerate(fruit):
-    if item not in family: 
-        "name" == fruit["name"]
+    return data
 
 
-print(family["name"])
+fruit = getFruity("Rosaceae")
+
+result = {}
+for fruits in fruit:
+    result.update(fruits)
+
+print(result)
+print(result["name"])
+
+question = input("What family do you think the following fruit is?") 
+print(result["name"])
+if question == "Rosaceae": 
+    print("YESSSS GOOD JOBB!!!!") 
+else: 
+    print("WRONG HAHAHHAHA") 
+
 
 
 
