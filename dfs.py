@@ -12,8 +12,30 @@ def getFruity(fruit):
 
 
 fruit = getFruity("Rosaceae")
+print(fruit)
 
-result = {}
+newdict = {fruits['id']: fruits['name'] for fruits in fruit}
+print(newdict)
+
+guesses = []
+question = input("Guess what fruits are in the Rosaceae family!!!!")
+if question in newdict.values(): 
+    print("YESSS GOOD JOBBBBB")
+elif question not in newdict.values(): 
+    print("wrong :( try again")
+    print(question)
+
+while True: 
+    hm = input("Can you guess more???")
+    if hm in newdict.values(): 
+        print("YAYYAYAAYA GOOD JOBBBBB")
+    elif hm == "no": 
+        print("awh...okay :(((")
+        break
+    elif hm not in newdict.values(): 
+        print("grrrr NOOOOOO")
+
+""" result = {}
 for fruits in fruit:
     result.update(fruits)
 
@@ -21,11 +43,10 @@ print(result)
 print(result["name"])
 
 question = input("What family do you think the following fruit is?") 
-print(result["name"])
 if question == "Rosaceae": 
     print("YESSSS GOOD JOBB!!!!") 
 else: 
-    print("WRONG HAHAHHAHA") 
+    print("WRONG HAHAHHAHA")  """
 
 
 
