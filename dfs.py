@@ -1,8 +1,11 @@
 import requests
 import json
+import random
+import tkinter
+from tkinter import *
 
 
-def getFruity(fruit): 
+def getFruity(Name): 
     response = requests.get(f"https://www.fruityvice.com/api/fruit/family/{fruit.lower()}")
     if response.status_code != 200: 
         print("Error fetching data!")
@@ -11,42 +14,55 @@ def getFruity(fruit):
     return data
 
 
-fruit = getFruity("Rosaceae")
-print(fruit)
+def checking(): 
+    if answers: 
+        guess = Enter.get()
+        if guess in answers:
+            Checked.config(text="YAYYAYAAYA GOOD JOBBBBB")
+            answers.remove(guess)
+        else: 
+            Checked.config(text="grrrr NOOOOOO")
+    else:
+        Checked.config(text="CONGRATS YOU GOT THEM ALLLLLLL")
+        newFamily()
 
-newdict = {fruits['id']: fruits['name'] for fruits in fruit}
-print(newdict)
+Family = ["Rosaceae", "Rutaceae", "Myrtaceae", "Moraceae", "Anacardiaceae", "Euphorbiaceae", "Arecaceae", "Cucurbitaceae", "Ericaceae", "Fabaceae"]
+def newFamily():
+    New = random.choice(Family)
+    x = getFruity(New)
+    global answers
+    answers = []
+    for i in range(len(x)):
+        answers.append(x[i]['name'])
 
-guesses = []
-question = input("Guess what fruits are in the Rosaceae family!!!!")
-if question in newdict.values(): 
-    print("YESSS GOOD JOBBBBB")
-elif question not in newdict.values(): 
-    print("wrong :( try again")
-    print(question)
+    instruct.config(text= f" Can you all the fruits in the {New} family? ")
 
-while True: 
-    hm = input("Can you guess more???")
-    if hm in newdict.values(): 
-        print("YAYYAYAAYA GOOD JOBBBBB")
-    elif hm == "no": 
-        print("awh...okay :(((")
-        break
-    elif hm not in newdict.values(): 
-        print("grrrr NOOOOOO")
+Window = Tk()
+Window.geometry("500x500")
 
-""" result = {}
-for fruits in fruit:
-    result.update(fruits)
+Title = Label(master=Window, text=" Family Fruity ").pack()
+Title.pack()
+Enter = Entry(master=Window).pack()
+Enter.pack()
 
-print(result)
-print(result["name"])
+instruct = Label(master=Window, text= "")
+instruct.pack()
 
-question = input("What family do you think the following fruit is?") 
-if question == "Rosaceae": 
-    print("YESSSS GOOD JOBB!!!!") 
-else: 
-    print("WRONG HAHAHHAHA")  """
+
+Checked = Label(master=Window, text= check)
+Checked.pack()
+
+Button1 = Button(master=Window, command= checking, text= "GUESS")
+Button1.pack()
+
+newFamily()
+
+Window.mainloop()
+
+
+
+Family = ["Rosaceae", "Rutaceae", "Myrtaceae", "Moraceae", "Anacardiaceae", "Euphorbiaceae", "Arecaceae", "Cucurbitaceae", "Ericaceae", "Fabaceae"]
+
 
 
 
