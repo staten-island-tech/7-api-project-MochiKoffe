@@ -61,9 +61,6 @@ Window.mainloop()
 
 
 
-Family = ["Rosaceae", "Rutaceae", "Myrtaceae", "Moraceae", "Anacardiaceae", "Euphorbiaceae", "Arecaceae", "Cucurbitaceae", "Ericaceae", "Fabaceae"]
-
-
 
 
 
