@@ -5,7 +5,7 @@ import tkinter
 from tkinter import *
 
 
-def getFruity(Name): 
+def getFruity(fruit): 
     response = requests.get(f"https://www.fruityvice.com/api/fruit/family/{fruit.lower()}")
     if response.status_code != 200: 
         print("Error fetching data!")
@@ -35,21 +35,21 @@ def newFamily():
     for i in range(len(x)):
         answers.append(x[i]['name'])
 
-    instruct.config(text= f" Can you all the fruits in the {New} family? ")
+    instruct.config(text= f" Can you name all the fruits in the {New} family? ")
 
 Window = Tk()
 Window.geometry("500x500")
 
-Title = Label(master=Window, text=" Family Fruity ").pack()
+Title = Label(master=Window, text=" Family Fruity ")
 Title.pack()
-Enter = Entry(master=Window).pack()
+Enter = Entry(master=Window)
 Enter.pack()
 
 instruct = Label(master=Window, text= "")
 instruct.pack()
 
 
-Checked = Label(master=Window, text= check)
+Checked = Label(master=Window, text= "check")
 Checked.pack()
 
 Button1 = Button(master=Window, command= checking, text= "GUESS")
